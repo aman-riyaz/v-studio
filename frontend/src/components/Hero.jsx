@@ -4,8 +4,8 @@ export default function Hero() {
       <div className="hero-overlay" />
       <div className="hero-content">
         <span className="eyebrow light">Vision Studio</span>
-        <h1>Photography that feels like memory.</h1>
-        <p>Award-winning storytelling for weddings, portraits, and events.</p>
+        <h1>Photography Booking Management System (Capture Every Moment)</h1>
+        <p>Book your Session now and make every moment special.</p>
         <div className="hero-cta">
           <a href="#book" className="btn btn-primary">Book a Session</a>
           <a href="#gallery" className="btn btn-ghost">View Gallery</a>

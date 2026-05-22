@@ -23,7 +23,7 @@ export default function App() {
         <Route path="/admin" element={<Admin />} />
       </Routes>
       <footer className="footer">
-        <p>© {new Date().getFullYear()} Vision Studio — Capturing moments that matter.</p>
+        <p>© {new Date().getFullYear()} Vision Studio — Capture Every Moment - Our Team - Aman, Shrinivas, Shravan, Manoj - Address - Kumta, Karnataka-581343 - Contact - +91 8792042301 </p>
       </footer>
     </div>
   );
