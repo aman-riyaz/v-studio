@@ -31,6 +31,55 @@ export default function Admin() {
   const onToggle = async (b) => {
     const next = b.status === "pending" ? "confirmed" : "pending";
     const updated = await updateBookingStatus(b._id, next);
+
+    if (next === "confirmed") {
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            access_key: "d1acfa9b-a815-43e2-8c0e-b7c5a8d3784a",
+            name: b.name,
+            email: b.email,
+            subject: "🎉 Booking Confirmed — Vision Studio",
+            from_name: "Vision Studio",
+            message: `Dear ${b.name},
+
+We are thrilled to let you know that your event booking with Vision Studio has been accepted and confirmed!
+
+We will Contact you Shortly on your Email or Phone.
+
+Here are your event booking details:
+----------------------------------------
+👤 Full Name: ${b.name}
+📧 Email: ${b.email}
+📞 Phone: ${b.phone}
+📸 Event Type: ${b.event}
+📅 Event Date: ${b.date}
+📝 Description: ${b.description || "No description provided."}
+----------------------------------------
+
+We look forward to capturing your beautiful moments! If you have any questions, feel free to reply to this email.
+
+Best regards,
+Vision Studio Team`
+          })
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          console.log(`✅ Booking confirmation email sent successfully via Web3Forms for: ${b.email}`);
+        } else {
+          console.error("❌ Web3Forms API returned an error:", result.message);
+        }
+      } catch (error) {
+        console.error("❌ Failed to send confirmation email via Web3Forms:", error.message);
+      }
+    }
+
     setBookings((all) => all.map((x) => (x._id === b._id ? updated : x)));
   };
 
