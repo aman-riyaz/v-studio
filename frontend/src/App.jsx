@@ -1,6 +1,7 @@
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Admin from "./pages/Admin.jsx";
+import CategoryGallery from "./pages/CategoryGallery.jsx";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -20,6 +21,7 @@ export default function App() {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/gallery/:category" element={<CategoryGallery />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
       <footer className="footer">
